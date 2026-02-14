@@ -510,6 +510,13 @@ class RandomizeTier0(DefaultOnToggle):
     display_name = "Randomize Default Part Recipes"
 
 
+class HintLocations(DefaultOnToggle):
+    """
+    Will your slot show/hint items that are available to research?
+    """
+    display_name = "Show/Hint Items in Accessible Locations"
+
+
 @dataclass
 class SatisfactoryOptions(PerGameCommonOptions, DeathLinkMixin):
     goal_selection: GoalSelection
@@ -535,6 +542,7 @@ class SatisfactoryOptions(PerGameCommonOptions, DeathLinkMixin):
     energy_link: EnergyLink
     start_inventory_from_pool: StartInventoryPool
     randomize_starter_recipes: RandomizeTier0
+    hint_accessible_locations: HintLocations
 
 
 option_groups = [
@@ -567,6 +575,9 @@ option_groups = [
         TrapChance,
         TrapSelectionPreset,
         TrapSelectionOverride
+    ], start_collapsed=True),
+    OptionGroup("Hints", [
+        HintLocations
     ], start_collapsed=True)
 ]
 
