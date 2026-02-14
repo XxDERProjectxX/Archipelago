@@ -249,7 +249,7 @@ class SatisfactoryWorld(World):
                 for location in self.get_locations()
                 if location.address in locations_visible_from_start and location.item \
                         and location.item.flags & (ItemClassification.progression | ItemClassification.useful) > 0 \
-                        and self.options.hint_visible_locations
+                        and self.options.hint_accessible_locations
             ]
 
             self.options.start_location_hints.value.update(location_names_with_useful_items)
