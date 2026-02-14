@@ -244,14 +244,15 @@ class SatisfactoryWorld(World):
                 or self.options.awesome_logic_placement.value == Placement.starting_inventory:
             locations_visible_from_start.update(range(1338700, 1338709))  # ids of shop locations 1 to 10
 
-            location_names_with_useful_items: Iterable[str] = [
-                location.name
-                for location in self.get_locations()
-                if location.address in locations_visible_from_start and location.item \
-                        and location.item.flags & (ItemClassification.progression | ItemClassification.useful) > 0 \
-                        and self.options.hint_accessible_locations
-            ]
+        location_names_with_useful_items: Iterable[str] = [
+            location.name
+            for location in self.get_locations()
+            if location.address in locations_visible_from_start and location.item \
+                    and location.item.flags & (ItemClassification.progression | ItemClassification.useful) > 0 \
+                    and self.options.hint_accessible_locations
+        ]
 
+        if hint_accessible_locations:
             self.options.start_location_hints.value.update(location_names_with_useful_items)
 
     def push_precollected_by_name(self, item_name: str) -> None:
