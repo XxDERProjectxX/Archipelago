@@ -251,7 +251,7 @@ class SatisfactoryWorld(World):
                     and location.item.flags & (ItemClassification.progression | ItemClassification.useful) > 0
         ]
 
-        if self.options.hint_accessible_locations:
+        if self.options.scout_accessible_locations:
             self.options.start_location_hints.value.update(location_names_with_useful_items)
 
     def push_precollected_by_name(self, item_name: str) -> None:
