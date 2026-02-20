@@ -236,22 +236,22 @@ class SatisfactoryWorld(World):
         Since we only know item placements after generation is completed it was either this 
             or fill_slot_data or modify_multidata, and this method seemed the best fit
         """
-
-        locations_visible_from_start: set[int] = set(range(1338000, 1338099))  # ids of Hub 1-1,1 to 2-5,10
-
-        if "Building: AWESOME Shop" in self.options.start_inventory \
-                or "Building: AWESOME Shop" in self.options.start_inventory_from_pool \
-                or self.options.awesome_logic_placement.value == Placement.starting_inventory:
-            locations_visible_from_start.update(range(1338700, 1338709))  # ids of shop locations 1 to 10
-
-        location_names_with_useful_items: Iterable[str] = [
-            location.name
-            for location in self.get_locations()
-            if location.address in locations_visible_from_start and location.item \
-                    and location.item.flags & (ItemClassification.progression | ItemClassification.useful) > 0
-        ]
-
         if self.options.scout_accessible_locations:
+                
+            locations_visible_from_start: set[int] = set(range(1338000, 1338099))  # ids of Hub 1-1,1 to 2-5,10
+    
+            if "Building: AWESOME Shop" in self.options.start_inventory \
+                    or "Building: AWESOME Shop" in self.options.start_inventory_from_pool \
+                    or self.options.awesome_logic_placement.value == Placement.starting_inventory:
+                locations_visible_from_start.update(range(1338700, 1338709))  # ids of shop locations 1 to 10
+    
+            location_names_with_useful_items: Iterable[str] = [
+                location.name
+                for location in self.get_locations()
+                if location.address in locations_visible_from_start and location.item \
+                        and location.item.flags & (ItemClassification.progression | ItemClassification.useful) > 0
+            ]
+    
             self.options.start_location_hints.value.update(location_names_with_useful_items)
 
     def push_precollected_by_name(self, item_name: str) -> None:
