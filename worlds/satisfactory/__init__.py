@@ -149,6 +149,7 @@ class SatisfactoryWorld(World):
                     "FreeSampleParts": self.options.free_sample_parts.value,
                     "FreeSampleRadioactive": bool(self.options.free_sample_radioactive),
                     "EnergyLink": bool(self.options.energy_link),
+                    "ScoutLocations": bool(self.options.scout_accessible_locations),
                     "StartingRecipies": starting_recipes
                 },
                 "SlotDataVersion": 1,
