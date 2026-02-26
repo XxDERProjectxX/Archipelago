@@ -542,7 +542,7 @@ class SatisfactoryOptions(PerGameCommonOptions, DeathLinkMixin):
     energy_link: EnergyLink
     start_inventory_from_pool: StartInventoryPool
     randomize_starter_recipes: RandomizeTier0
-    Scout_accessible_locations: ScoutLocations
+    scout_accessible_locations: ScoutLocations
 
 
 option_groups = [
